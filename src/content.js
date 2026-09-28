@@ -3,7 +3,7 @@ export const topics = [
   entry('p','letters','papillon','🦋',['pa','pi','po','pu','pé'],['papa','pile','poule','pavé','pipe'], 'Le p descend sous la ligne. Son ventre est à droite.', 'Les lèvres se ferment puis laissent sortir un petit souffle.'),
   entry('b','letters','ballon','🎈',['ba','bi','bo','bu','bé'],['bébé','balle','bulle','bol','boule'], 'Le b monte au-dessus de la ligne. Son ventre est à droite.', 'Les lèvres se ferment. Pose la main sur ta gorge : ça vibre.'),
   entry('d','letters','domino','🎲',['da','di','do','du','dé'],['dodo','dame','date','dé','domino'], 'Le d monte au-dessus de la ligne. Son ventre est à gauche.', 'Le bout de la langue touche juste derrière les dents du haut.'),
-  entry('q','letters','quatre','🍀',['qua','qui','que','qué','quoi'],['quatre','qui','quille','quitte','quai'], 'Le q descend sous la ligne. Son ventre est à gauche. Pour lire, on le rencontre souvent avec u : qu.', 'Dans quatre et quille, qu fait le son /k/.'),
+  entry('q','letters','quatre','🍀',['qua','qui','que','quou','quoi'],['quatre','qui','quille','quitte','quai'], 'Le q descend sous la ligne. Son ventre est à gauche. Pour lire, on le rencontre souvent avec u : qu.', 'Dans quatre et quille, qu fait le son /k/.'),
   entry('f','sounds','fleur','🌼',['fa','fi','fo','fu','fé'],['fil','fée','folie','foule','fumée'], 'Pour f, les dents du haut touchent doucement la lèvre du bas.', 'Souffle doucement. La gorge ne vibre pas.'),
   entry('v','sounds','vélo','🚲',['va','vi','vo','vu','vé'],['vélo','vie','ville','vase','vue'], 'Pour v, les dents du haut touchent doucement la lèvre du bas.', 'Fais vibrer ta voix, comme un petit moteur. Compare avec f.'),
   entry('e','vowels','renard','🦊',['le','re','de','me','te'],['renard','petit','cheval','repas','retour'], 'Le son de e change selon le mot. Ici, on écoute le début de renard. En fin de mot, e est souvent muet.', 'Écoute le mot entier avec un adulte. Le e ne se lit pas toujours de la même façon.'),
@@ -18,7 +18,13 @@ export const families = [
   { id:'vowels', title:'Les voyelles magiques', subtitle:'Je découvre leurs sons', letters:['e','é','ai','oi','ou'], color:'blue', emoji:'✨' },
 ];
 export const modes = [
-  {id:'observe', name:'Je repère', description:'Retrouve la bonne lettre.', icon:'eye'},
+  {id:'picture', name:'Les mots en images', description:'Lis le mot. Trouve son dessin.', icon:'picture'},
+  {id:'observe', name:'Je repère', description:'Les lettres, pour s’échauffer.', icon:'eye'},
   {id:'listen', name:'J’écoute', description:'Écoute, puis choisis.', icon:'ear'},
   {id:'read', name:'Je lis', description:'Lis et retrouve le bon son.', icon:'book'},
+];
+export const levels = [
+  {id:'syllables',name:'Les syllabes',description:'Je commence · pa, bou, fi'},
+  {id:'words',name:'Les mots',description:'Je progresse · 4 choix'},
+  {id:'challenge',name:'Le grand défi',description:'Je mélange · 6 choix, 8 mots'},
 ];

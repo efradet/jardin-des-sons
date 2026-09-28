@@ -11,21 +11,32 @@ npm install
 npm run dev
 ```
 
-Ouvrir l'adresse locale affichée. `npm run build` produit `dist`, et `npm run preview` sert ce résultat.
+Le serveur écoute sur le port **5182**, sur toutes les interfaces. Sur ce PC : http://localhost:5182. Sur le même réseau domestique : http://172.22.22.77:5182 (adresse Wi-Fi actuelle du PC ; elle peut changer). Garder le PC et le serveur allumés. Aucun tunnel ni transfert de port Internet n'est nécessaire.
+
+`npm run build` produit `dist`, et `npm run preview` sert ce résultat sur le même port. Arrêter le serveur de développement avant de lancer l'aperçu. Le lanceur Windows utilise les mêmes paramètres réseau.
 
 ## Jouer
 
 - Choisir parmi p, b, d, q, f, v, e, é, ai, oi et ou dans la carte.
 - Écouter les exemples et découvrir l'indice de forme ou de prononciation.
 - **Je repère** : retrouver la lettre affichée parmi des lettres proches.
+- **Les mots en images** : lire un mot entier puis choisir son dessin, sans légende visible dans les réponses. Les cartes gardent leur taille après un appui.
 - **J'écoute** : écouter une syllabe/un mot et sélectionner son écriture.
 - **Je lis** : lire une syllabe/un mot, écouter les propositions numérotées et choisir le son correspondant.
-- Cinq défis par séance. Aucun chronomètre ni pénalité ; les erreurs autorisent un nouvel essai. Une fleur par séance terminée.
-- Les réglages permettent de choisir syllabes ou mots, agrandir les caractères d'exercice et aérer le texte.
+- **Les mots** (niveau proposé par défaut) : cinq mots par branche et quatre choix. Les réponses d'écoute comprennent des mots proches, comme poisson / poison ou poule / boule.
+- **Le grand défi** : huit mots tirés de plusieurs branches, avec six choix. **Je repère** reste un échauffement de cinq lettres.
+- Aucun chronomètre ni pénalité ; les erreurs autorisent un nouvel essai. Une fleur par séance terminée. Le bilan distingue les réponses trouvées du premier coup sans indice.
+- Les réglages permettent d'agrandir les caractères et d'aérer le texte. Les anciennes préférences de confort et les fleurs sont conservées.
 
 ## Audio, données et accompagnement
 
-La synthèse `speechSynthesis` utilise une voix française si elle est installée. Selon le navigateur/système, cette voix peut être locale ou fournie en ligne ; sa qualité sur des syllabes isolées varie. Aucun micro n'est utilisé. En cas d'échec de la synthèse, les textes restent accessibles avec un adulte. L'application n'évalue pas la lecture orale.
+Le vocabulaire est livré avec **237 fichiers audio**, produits avec la voix française **Denise Neural** (Microsoft), à un débit légèrement ralenti (-12 %). La voix reste identique sur ordinateur et téléphone. Il s'agit de synthèse vocale préenregistrée, pas d'une personne enregistrée. Les formes ambiguës sont corrigées avec des homophones : `vo` → `veau`, `vai` → `vais`, `voi` → `voix`. Les exercices montrent toujours la graphie étudiée.
+
+Les fichiers sont lus directement depuis l'hébergement, sans clé API ni service de synthèse appelé pendant les jeux. En cas d'échec audio, l'application affiche une aide et permet de réessayer ; elle ne remplace pas les sons étudiés par une autre voix. Seul un éventuel texte auxiliaire absent du catalogue peut utiliser `speechSynthesis`. Aucun micro n'est utilisé. L'application n'évalue pas la lecture orale. Vérifier ensemble les sons à la première utilisation : un test logiciel ne certifie pas une prononciation.
+
+Les **48 dessins** sont les SVG originaux [OpenMoji](https://openmoji.org/), sous [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), distribués sans modification. Attribution détaillée : `public/illustrations/ATTRIBUTION.md`. Les illustrations pouvant représenter plusieurs bonnes réponses ne sont pas opposées dans un même défi (oiseau / hibou, poisson / requin).
+
+Pour régénérer les ressources (facultatif, réservé au développement) : `python -m pip install edge-tts`, `node scripts/prepare-assets.mjs`, puis `python scripts/generate-assets.py`. Seul le vocabulaire générique est envoyé lors de cette génération. Les fichiers livrés rendent Python inutile pour jouer.
 
 Les fleurs et préférences sont stockées uniquement dans localStorage de ce navigateur, sans compte enfant. Un navigateur qui bloque ce stockage affiche un message et garde la séance utilisable. Les polices Google Fonts disposent d'un repli Arial ; elles ne reçoivent pas les résultats d'exercice.
 
@@ -33,7 +44,7 @@ La carte mentale organise la découverte : elle n'est pas présentée comme un t
 
 ## Vérifications
 
-`npm test` vérifie les 66 combinaisons lettre/mode/niveau, les réponses uniques, les réessais, la prévention du double comptage et les données locales invalides. `npm run build` vérifie la compilation.
+`npm test` vérifie les exercices des branches, les mots/dessins, les six choix du grand défi, les corrections phonétiques, les fichiers audio et SVG, les alternatives ambiguës, les réessais, les indices, le double comptage et les données locales invalides. `npm run build` vérifie la compilation.
 
 Les contenus sont dans `src/content.js`, le moteur dans `src/game.js`, la carte dans `src/App.jsx`, les séances dans `src/Exercise.jsx` et le thème dans `src/styles.css`.
 
