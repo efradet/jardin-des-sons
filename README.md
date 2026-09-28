@@ -20,7 +20,8 @@ Le serveur écoute sur le port **5182**, sur toutes les interfaces. Sur ce PC : 
 - Choisir parmi p, b, d, q, f, v, e, é, ai, oi et ou dans la carte.
 - Écouter les exemples et découvrir l'indice de forme ou de prononciation.
 - **Je repère** : retrouver la lettre affichée parmi des lettres proches.
-- **Les mots en images** : lire un mot entier puis choisir son dessin, sans légende visible dans les réponses. Les cartes gardent leur taille après un appui.
+- **Les mots en images** : lire ou écouter un mot entier puis choisir son dessin, sans légende visible dans les réponses. Les cartes gardent leur taille après un appui. L'écoute du mot compte comme une aide à la lecture.
+- **La chenille des mots** : écouter un mot entier puis cliquer sur son écriture. Une bonne réponse fait avancer la chenille et manger une feuille ; une erreur lui fait faire une grimace sans avancer. Cinq étapes, ou huit dans le grand défi.
 - **J'écoute** : écouter une syllabe/un mot et sélectionner son écriture.
 - **Je lis** : lire une syllabe/un mot, écouter les propositions numérotées et choisir le son correspondant.
 - **Les mots** (niveau proposé par défaut) : cinq mots par branche et quatre choix. Les réponses d'écoute comprennent des mots proches, comme poisson / poison ou poule / boule.
@@ -38,7 +39,7 @@ Les **48 dessins** sont les SVG originaux [OpenMoji](https://openmoji.org/), sou
 
 Pour régénérer les ressources (facultatif, réservé au développement) : `python -m pip install edge-tts`, `node scripts/prepare-assets.mjs`, puis `python scripts/generate-assets.py`. Seul le vocabulaire générique est envoyé lors de cette génération. Les fichiers livrés rendent Python inutile pour jouer.
 
-Les fleurs et préférences sont stockées uniquement dans localStorage de ce navigateur, sans compte enfant. Un navigateur qui bloque ce stockage affiche un message et garde la séance utilisable. Les polices Google Fonts disposent d'un repli Arial ; elles ne reçoivent pas les résultats d'exercice.
+Les fleurs, préférences et les 100 dernières séances terminées sont stockées uniquement dans localStorage de ce navigateur, sans compte enfant. « Mon jardin » affiche les dix dernières séances, leur date et le résultat du premier essai sans aide. Les anciennes fleurs sont conservées. Chaque navigateur, appareil et adresse du site possède sa propre sauvegarde : aucune synchronisation entre le téléphone, le PC, l'adresse locale et le site hébergé. Un navigateur qui bloque ce stockage affiche un message et garde la séance utilisable. Les polices Google Fonts disposent d'un repli Arial ; elles ne reçoivent pas les résultats d'exercice.
 
 La carte mentale organise la découverte : elle n'est pas présentée comme un traitement de la dyslexie. Adapter le rythme avec l'enseignant ou l'orthophoniste. `e` est contextuel, `q` est décodé dans `qu`, et les mots plus complexes peuvent nécessiter l'aide d'un adulte.
 

@@ -18,6 +18,7 @@ export const families = [
   { id:'vowels', title:'Les voyelles magiques', subtitle:'Je découvre leurs sons', letters:['e','é','ai','oi','ou'], color:'blue', emoji:'✨' },
 ];
 export const modes = [
+  {id:'caterpillar', name:'La chenille des mots', description:'Écoute, choisis, fais-la avancer !', icon:'bug'},
   {id:'picture', name:'Les mots en images', description:'Lis le mot. Trouve son dessin.', icon:'picture'},
   {id:'observe', name:'Je repère', description:'Les lettres, pour s’échauffer.', icon:'eye'},
   {id:'listen', name:'J’écoute', description:'Écoute, puis choisis.', icon:'ear'},

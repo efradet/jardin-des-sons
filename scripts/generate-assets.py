@@ -41,7 +41,7 @@ async def main():
                     ET.fromstring(data)
                     path.write_bytes(data)
                 await asyncio.to_thread(fetch)
-    await asyncio.gather(*(illustration(code) for code in PLAN['pictures']))
+    await asyncio.gather(*(illustration(code) for code in [*PLAN['pictures'],'1F41B']))
     print(f'Drawings: {len(PLAN["pictures"])}',flush=True)
     await asyncio.gather(*(clip(item) for item in PLAN['audio']))
     manifest={item['text']:'/audio/'+item['file'] for item in PLAN['audio']}

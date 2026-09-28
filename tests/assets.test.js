@@ -7,7 +7,7 @@ import {createQuestions,initialSession,answerQuestion} from '../src/game.js';
 const clips=JSON.parse(readFileSync(new URL('../src/audio-manifest.json',import.meta.url)));
 test('all playable sounds have non-empty local recordings',()=>{
   const vocabulary=new Set(topics.flatMap(t=>[t.word,t.tip,...t.syllables,...t.words]));
-  for(const t of topics)for(const mode of ['picture','listen','read'])for(const level of ['syllables','words','challenge'])for(const q of createQuestions(t.id,mode,level)){vocabulary.add(q.spoken);q.options.forEach(w=>vocabulary.add(w));}
+  for(const t of topics)for(const mode of ['picture','listen','read','caterpillar'])for(const level of ['syllables','words','challenge'])for(const q of createQuestions(t.id,mode,level)){vocabulary.add(q.spoken);q.options.forEach(w=>vocabulary.add(w));}
   for(const word of vocabulary){assert.ok(clips[word],`No recording: ${word}`);assert.ok(statSync(new URL('../public'+clips[word],import.meta.url)).size>1000);}
 });
 test('all drawings are local SVG files with no scripts or remote resources',()=>{
