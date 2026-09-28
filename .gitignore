@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.sites-runtime/
+*.log
+artifacts/
+.openai/
+.env
+.env.*
+!.env.example
