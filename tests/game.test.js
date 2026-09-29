@@ -4,7 +4,7 @@ import { topics } from '../src/content.js';
 import { createQuestions, answerQuestion, initialSession, readSaved } from '../src/game.js';
 
 test('all requested graphemes have a five-question session in every mode and level', () => {
-  assert.deepEqual(topics.map(t => t.id), ['p','b','d','q','f','v','e','é','ai','oi','ou']);
+  assert.deepEqual(topics.map(t => t.id), ['p','b','d','q','f','v','e','é','ai','oi','ou','au','eau','g','j']);
   for (const topic of topics) for (const mode of ['observe','listen','read']) for (const level of ['syllables','words']) {
     const questions = createQuestions(topic.id, mode, level, () => .4);
     assert.equal(questions.length, 5);

@@ -1,6 +1,21 @@
 // Original, unmodified OpenMoji drawings, CC BY-SA 4.0. See public/illustrations/ATTRIBUTION.md.
 const picture = (code, near) => ({code, near, src:`/illustrations/${code}.svg`});
 export const pictures = {
+  dinosaure:picture('1F995',['dinosaure','dinette','dynamite']),
+  chaussette:picture('1F9E6',['chaussette','chouette','chaussure']),
+  aubergine:picture('1F346',['aubergine','auberge','origine']),
+  chaussure:picture('1F45F',['chaussure','chasseur','chaussette']),
+  cadeau:picture('1F381',['cadeau','cadre','radeau']),
+  gâteau:picture('1F382',['gâteau','râteau','bateau']),
+  gant:picture('1F9E4',['gant','camp','dent']),
+  guitare:picture('1F3B8',['guitare','gare','guitare']),
+  gorille:picture('1F98D',['gorille','grille','quilles']),
+  escargot:picture('1F40C',['escargot','escalier','cargo']),
+  journal:picture('1F4F0',['journal','journée','signal']),
+  jus:picture('1F9C3',['jus','jeu','joue']),
+  bijou:picture('1F48E',['bijou','bisou','hibou']),
+  jouet:picture('1F9F8',['jouet','fouet','joue']),
+  judo:picture('1F94B',['judo','judas','joli']),
   papillon:picture('1F98B',['pavillon','papille','papillon']),
   poule:picture('1F414',['boule','poulpe','poule']),
   pomme:picture('1F34E',['paume','pompe','pomme']),
@@ -52,9 +67,13 @@ export const pictures = {
 };
 // A broad label can legitimately name multiple pictures. Never offer those
 // pictures as competing answers (an owl is a bird, a shark is a fish).
-const ambiguousGroups=[['oiseau','hibou','coq','poule'],['poisson','requin'],['repas','pomme','poire','banane','fraise','cerise','lait','poisson']];
+const ambiguousGroups=[['oiseau','hibou','coq','poule'],['poisson','requin'],['dragon','dinosaure'],['jouet','ballon','dé','quilles','cadeau'],['repas','pomme','poire','banane','fraise','cerise','lait','poisson','aubergine','gâteau','jus']];
 export const ambiguousPictures=(a,b)=>ambiguousGroups.some(group=>group.includes(a)&&group.includes(b));
 export const pictureWords = {
+  au:['dauphin','dinosaure','chaussette','aubergine','chaussure'],
+  eau:['bateau','cadeau','gâteau','drapeau','oiseau'],
+  g:['gâteau','gant','guitare','gorille','escargot'],
+  j:['journal','jus','bijou','jouet','judo'],
   p:['papillon','poule','pomme','poire','piano'],
   b:['ballon','banane','bateau','bébé','baleine'],
   d:['dé','dent','dauphin','dragon','drapeau'],

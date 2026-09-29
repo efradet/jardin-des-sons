@@ -1,4 +1,5 @@
 import { topics, modes } from './content.js';
+import {pronunciationText} from './pronunciation.js';
 import {pictures, pictureWords, ambiguousPictures} from './pictures.js';
 export const initialSession = () => ({correct:0, firstTry:0, attempts:0, mistakes:0, hintUsed:false, solved:false, feedback:'', choice:null});
 export function shuffle(items, random = Math.random) {
@@ -24,7 +25,11 @@ export function createQuestions(topicId, mode, level, random = Math.random) {
   return pool.map((value,index)=> {
     const answer = mode==='observe' ? topic.id : value;
     const alternatives = mode==='observe' ? family.map(t=>t.id) : family.flatMap(t=>level==='words'?t.words:t.syllables);
-    const distractors = shuffle([...new Set(alternatives.filter(v=>v!==answer))], random).slice(0,3);
+    const sounds=new Set([pronunciationText(answer)]);
+    const distractors = shuffle([...new Set(alternatives.filter(v=>v!==answer))], random).filter(v=>{
+      if(mode==='observe')return true;
+      const sound=pronunciationText(v);if(sounds.has(sound))return false;sounds.add(sound);return true;
+    }).slice(0,3);
     return {id:`${topicId}-${mode}-${level}-${index}`, answer, options:shuffle([answer,...distractors],random), spoken:mode==='observe'?`Retrouve ${topic.id}, comme dans ${topic.word}.`:value, hint:mode==='observe'?topic.tip:`Lis doucement : ${value}. Tu peux aussi écouter.`, target:mode==='observe'?topic.id:value};
   });
 }

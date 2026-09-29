@@ -37,8 +37,7 @@ export default function Exercise({topic,mode,level,onClose,onComplete}){
   }
   async function listen(){setLoading(true);const started=await say(q.spoken);setLoading(false);if(started)setHeard(true);}
   function help(){setHint(v=>!v);if(!state.solved)setState(s=>({...s,hintUsed:true}));}
-  function hearPicture(){if(!state.solved)setState(s=>({...s,hintUsed:true}));return say(q.spoken);}
-  const instruction=caterpillarMode?'Écoute le mot. Choisis-le pour avancer !':pictureMode?'Lis ou écoute le mot. Quel dessin lui correspond ?':mode==='observe'?'Retrouve cette lettre.':listeningMode?'Écoute et retrouve ce que tu entends.':'Lis, puis écoute les choix. Lequel correspond ?';
+  const instruction=caterpillarMode?'Écoute le mot. Choisis-le pour avancer !':pictureMode?'Lis le mot. Quel dessin lui correspond ?':mode==='observe'?'Retrouve cette lettre.':listeningMode?'Écoute et retrouve ce que tu entends.':'Lis, puis écoute les choix. Lequel correspond ?';
   const selectionLabel=level==='challenge'&&mode!=='observe'?'toutes les branches':topic.id;
   return <Modal title={done?'Une fleur pour toi !':`${modes.find(m=>m.id===mode).name} · ${selectionLabel}`} onClose={onClose} className={`exercise-modal ${pictureMode?'picture-modal':''} ${caterpillarMode?'caterpillar-modal':''}`}>
     {done?<div className="celebration"><div className="reward-flower" aria-hidden="true">🌻</div><span className="eyebrow">TA PETITE VICTOIRE</span><h3>Bravo Elisabeth !</h3><p>Tu as terminé tes {total} défis.<br/>Une nouvelle fleur pousse dans ton jardin.</p><div className="session-result"><strong>{state.firstTry} / {total}</strong><span>trouvés du premier coup, sans indice</span></div><p className="result-kind">Chaque essai t’aide à apprendre.</p><button className="primary" autoFocus onClick={onClose}><Sprout size={20}/> Retour au jardin</button></div>:<>
@@ -49,9 +48,8 @@ export default function Exercise({topic,mode,level,onClose,onComplete}){
         {listeningMode&&!audioError?<button className="listen-button" disabled={loading} onClick={listen}><Volume2 size={32}/>{loading?'Préparation…':heard?'Écouter encore':'Écouter'}</button>:<div className={`reading-target ${mode==='observe'?'letter-target':''}`}>{q.target}</div>}
         {mode==='observe'&&<small>comme dans <strong>{topic.word}</strong></small>}
         {mode==='read'&&<small>Lis à voix haute, puis choisis le bon son.</small>}
-        {pictureMode&&<button className="sound-button picture-listen" onClick={hearPicture}><Volume2 size={20}/> Écouter le mot</button>}
       </div>
-      {audioError&&<p className="audio-note" role="status">L’enregistrement n’a pas pu être lu. Vérifie le son ou la connexion, ou lis avec un adulte.<button className="text-button" onClick={()=>setAudioError(false)}>Réessayer l’audio</button></p>}
+      {audioError&&!pictureMode&&<p className="audio-note" role="status">L’enregistrement n’a pas pu être lu. Vérifie le son ou la connexion, ou lis avec un adulte.<button className="text-button" onClick={()=>setAudioError(false)}>Réessayer l’audio</button></p>}
       <div className={`answers ${pictureMode?'picture-answers':''} ${q.options.length===6?'six-choices':''} ${mode==='read'&&!audioError?'audio-answers':''}`}>
         {q.options.map((option,i)=><div className="answer-wrap" key={option}>
           {mode==='read'&&!audioError&&<button className="option-audio" aria-label={`Écouter le choix ${i+1}`} onClick={()=>say(option)}><Volume2 size={21}/> Son {i+1}</button>}
@@ -62,8 +60,8 @@ export default function Exercise({topic,mode,level,onClose,onComplete}){
         </div>)}
       </div>
       <div className={`feedback ${state.solved?'success':''}`} role="status" aria-live="polite">{state.feedback||'Tu peux prendre tout le temps qu’il te faut.'}</div>
-      {state.solved&&mode!=='observe'&&<button className="sound-button answer-replay" onClick={()=>say(q.answer)}><Volume2 size={19}/> Écouter « {q.answer} »</button>}
-      {hint&&<div className="hint">{pictureMode?'Tu peux écouter le mot pour t’aider.':q.hint}<button className="text-button" onClick={()=>say(mode==='observe'?topic.tip:q.answer)}><Volume2 size={18}/> Écouter l’aide</button></div>}
+      {state.solved&&mode!=='observe'&&!pictureMode&&<button className="sound-button answer-replay" onClick={()=>say(q.answer)}><Volume2 size={19}/> Écouter « {q.answer} »</button>}
+      {hint&&<div className="hint">{pictureMode?'Suis les lettres avec ton doigt. Lis doucement, puis assemble les sons.':q.hint}{!pictureMode&&<button className="text-button" onClick={()=>say(mode==='observe'?topic.tip:q.answer)}><Volume2 size={18}/> Écouter l’aide</button>}</div>}
       <div className="exercise-footer"><button className="text-button" onClick={help} aria-expanded={hint}><Lightbulb size={19}/>{hint?'Masquer l’aide':'Un petit indice'}</button>{state.solved?<button ref={nextRef} className="primary" onClick={next}>{index===total-1?'Cueillir ma fleur':'Défi suivant'}<ArrowRight size={19}/></button>:<span className="soft-note"><RotateCcw size={15}/> On a le droit d’essayer !</span>}</div>
       {(pictureMode||caterpillarMode)&&<p className="illustration-credit">Dessins : <a href="https://openmoji.org/" target="_blank" rel="noreferrer">OpenMoji</a> · CC BY-SA 4.0</p>}
     </>}

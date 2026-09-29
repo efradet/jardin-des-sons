@@ -11,11 +11,15 @@ export const topics = [
   entry('ai','vowels','balai','🧹',['pai','bai','fai','vai','lai'],['balai','lait','aile','laine','baie'], 'Deux lettres ensemble. Dans balai et lait, ai fait le son /ɛ/.', 'Écoute ai dans balai. Ailleurs, sa prononciation peut varier.'),
   entry('oi','vowels','poire','🍐',['poi','boi','foi','voi','doi'],['poire','bois','voile','roi','noix'], 'Le o et le i se lisent ensemble : oi, comme dans poire.', 'Écoute le son /wa/ dans poire.'),
   entry('ou','vowels','loup','🐺',['pou','bou','fou','vou','dou'],['loup','poule','boule','roue','fou'], 'Le o et le u se lisent ensemble : ou, comme dans loup.', 'Arrondis les lèvres et écoute ou dans loup.'),
+  entry('au','vowels','dauphin','🐬',['pau','tau','sau','fau','chau'],['dauphin','dinosaure','chaussette','aubergine','chaussure'], 'Dans dauphin, au se lit comme le o de vélo. Deux lettres font un seul son.', 'Écoute au dans dauphin. Au et eau peuvent faire le même son.'),
+  entry('eau','vowels','bateau','⛵',['peau','beau','veau','seau','deau'],['bateau','cadeau','gâteau','drapeau','oiseau'], 'Dans bateau, eau se lit comme le o de vélo. Trois lettres font un seul son.', 'Écoute eau dans bateau. Le son seul ne permet pas de choisir entre au et eau : on apprend le mot entier.'),
+  entry('g','sounds','gâteau','🎂',['ga','go','gui','gou','gai'],['gâteau','gant','guitare','gorille','escargot'], 'Ici, on écoute le g de gâteau. Devant e et i, g change souvent de son, comme dans girafe. Avec gu, il garde le son de guitare.', 'Compare gâteau et girafe. Dans ces jeux, on commence avec le g de gâteau.'),
+  entry('j','sounds','journal','📰',['je','jou','ju','jeu','joi'],['journal','jus','bijou','jouet','judo'], 'Le j descend sous la ligne et porte un point. Écoute le début de journal.', 'Fais vibrer doucement ta voix. Écoute j dans journal et dans bijou.'),
 ];
 export const families = [
   { id:'letters', title:'Les lettres malicieuses', subtitle:'J’observe leur forme', letters:['p','b','d','q'], color:'peach', emoji:'🔎' },
-  { id:'sounds', title:'Les sons qui chatouillent', subtitle:'J’écoute et je ressens', letters:['f','v'], color:'lilac', emoji:'🎵' },
-  { id:'vowels', title:'Les voyelles magiques', subtitle:'Je découvre leurs sons', letters:['e','é','ai','oi','ou'], color:'blue', emoji:'✨' },
+  { id:'sounds', title:'Les sons qui chatouillent', subtitle:'J’écoute et je ressens', letters:['f','v','g','j'], color:'lilac', emoji:'🎵' },
+  { id:'vowels', title:'Les voyelles magiques', subtitle:'Je découvre leurs sons', letters:['e','é','ai','oi','ou','au','eau'], color:'blue', emoji:'✨' },
 ];
 export const modes = [
   {id:'caterpillar', name:'La chenille des mots', description:'Écoute, choisis, fais-la avancer !', icon:'bug'},

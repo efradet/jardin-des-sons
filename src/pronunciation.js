@@ -1,6 +1,10 @@
 // Homophones force the intended French sound instead of spelling abbreviations
 // or treating invented syllables as foreign words. Displayed text never changes.
 export const pronunciation = {
+  pau:'peau', tau:'taux', sau:'saut', fau:'faux', chau:'chaud',
+  peau:'peau', beau:'beau', veau:'veau', seau:'saut', deau:'dos',
+  ga:'gars', go:'go', gui:'gui', gou:'goût', gai:'gai',
+  je:'je', jou:'joue', ju:'jus', jeu:'jeu', joi:'joie',
   pa:'pas', pi:'pie', po:'pot', pu:'pu', pé:'pé',
   ba:'bas', bi:'bi', bo:'beau', bu:'bu', bé:'bé',
   da:'da', di:'dit', do:'dos', du:'du', dé:'dé',
