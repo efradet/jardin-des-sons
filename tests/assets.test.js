@@ -10,6 +10,15 @@ test('all playable sounds have non-empty local recordings',()=>{
   for(const t of topics)for(const mode of ['picture','listen','read','caterpillar'])for(const level of ['syllables','words','challenge'])for(const q of createQuestions(t.id,mode,level)){vocabulary.add(q.spoken);q.options.forEach(w=>vocabulary.add(w));}
   for(const word of vocabulary){assert.ok(clips[word],`No recording: ${word}`);assert.ok(statSync(new URL('../public'+clips[word],import.meta.url)).size>1000);}
 });
+test('caterpillar reactions are short local PCM sound effects',()=>{
+  for(const name of ['chenille-miam.wav','chenille-beurk.wav']){
+    const wav=readFileSync(new URL('../public/audio/'+name,import.meta.url));
+    assert.equal(wav.toString('ascii',0,4),'RIFF');
+    assert.equal(wav.toString('ascii',8,12),'WAVE');
+    assert.equal(wav.readUInt16LE(20),1);
+    assert.ok(wav.length>10000&&wav.length<60000);
+  }
+});
 test('all drawings are local SVG files with no scripts or remote resources',()=>{
   for(const pic of Object.values(pictures)){
     const svg=readFileSync(new URL('../public'+pic.src,import.meta.url),'utf8');

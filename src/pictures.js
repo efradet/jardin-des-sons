@@ -1,6 +1,38 @@
 // Original, unmodified OpenMoji drawings, CC BY-SA 4.0. See public/illustrations/ATTRIBUTION.md.
 const picture = (code, near) => ({code, near, src:`/illustrations/${code}.svg`});
 export const pictures = {
+  brocoli:picture('1F966',['brocoli','broche','bricolage']),
+  brique:picture('1F9F1',['brique','brioche','crique']),
+  brosse:picture('1FAA5',['brosse','bosse','broche']),
+  arbre:picture('1F333',['arbre','arme','herbe']),
+  zèbre:picture('1F993',['zèbre','zéro','zèle']),
+  dromadaire:picture('1F42A',['dromadaire','domino','drame']),
+  cadre:picture('1F5BC',['cadre','carte','câble']),
+  cèdre:picture('1F332',['cèdre','cendre','céder']),
+  grenouille:picture('1F438',['grenouille','gribouille','nouille']),
+  grue:picture('1F3D7',['grue','rue','grise']),
+  grillon:picture('1F997',['grillon','grillage','grison']),
+  tigre:picture('1F405',['tigre','tige','titre']),
+  grappe:picture('1F347',['grappe','trappe','grippe']),
+  crabe:picture('1F980',['crabe','câble','crâne']),
+  crocodile:picture('1F40A',['crocodile','crocus','crocodile']),
+  crayon:picture('1F58D',['crayon','rayon','cratère']),
+  croissant:picture('1F950',['croissant','croisant','croissance']),
+  écran:picture('1F5A5',['écran','élan','écrit']),
+  frites:picture('1F35F',['frites','friteuse','fuite']),
+  fromage:picture('1F9C0',['fromage','garage','fromager']),
+  fruit:picture('1F34A',['fruit','fuit','froid']),
+  coffre:picture('1F9F0',['coffre','coiffe','offre']),
+  prise:picture('1F50C',['prise','prune','prisme']),
+  imprimante:picture('1F5A8',['imprimante','importante','imprimer']),
+  empreinte:picture('1F463',['empreinte','emprunt','empreinte']),
+  éprouvette:picture('1F9EA',['éprouvette','épreuve','épouvante']),
+  prince:picture('1F934',['prince','pince','principe']),
+  train:picture('1F682',['train','trait','grain']),
+  tracteur:picture('1F69C',['tracteur','traiteur','acteur']),
+  trompette:picture('1F3BA',['trompette','trempette','tempête']),
+  citron:picture('1F34B',['citron','cintre','citrus']),
+  trèfle:picture('2618',['trèfle','trêve','truelle']),
   dinosaure:picture('1F995',['dinosaure','dinette','dynamite']),
   chaussette:picture('1F9E6',['chaussette','chouette','chaussure']),
   aubergine:picture('1F346',['aubergine','auberge','origine']),
@@ -67,9 +99,16 @@ export const pictures = {
 };
 // A broad label can legitimately name multiple pictures. Never offer those
 // pictures as competing answers (an owl is a bird, a shark is a fish).
-const ambiguousGroups=[['oiseau','hibou','coq','poule'],['poisson','requin'],['dragon','dinosaure'],['jouet','ballon','dé','quilles','cadeau'],['repas','pomme','poire','banane','fraise','cerise','lait','poisson','aubergine','gâteau','jus']];
+const ambiguousGroups=[['oiseau','hibou','coq','poule'],['poisson','requin'],['dragon','dinosaure'],['arbre','cèdre'],['jouet','ballon','dé','quilles','cadeau'],['repas','pomme','poire','banane','fraise','cerise','lait','poisson','aubergine','gâteau','jus','brocoli','grappe','crabe','croissant','frites','fromage','fruit','citron']];
 export const ambiguousPictures=(a,b)=>ambiguousGroups.some(group=>group.includes(a)&&group.includes(b));
 export const pictureWords = {
+  br:['brocoli','brique','brosse','arbre','zèbre'],
+  dr:['dragon','drapeau','dromadaire','cadre','cèdre'],
+  gr:['grenouille','grue','grillon','tigre','grappe'],
+  cr:['crabe','crocodile','crayon','croissant','écran'],
+  fr:['fraise','frites','fromage','fruit','coffre'],
+  pr:['prise','imprimante','empreinte','éprouvette','prince'],
+  tr:['train','tracteur','trompette','citron','trèfle'],
   au:['dauphin','dinosaure','chaussette','aubergine','chaussure'],
   eau:['bateau','cadeau','gâteau','drapeau','oiseau'],
   g:['gâteau','gant','guitare','gorille','escargot'],

@@ -15,11 +15,19 @@ export const topics = [
   entry('eau','vowels','bateau','⛵',['peau','beau','veau','seau','deau'],['bateau','cadeau','gâteau','drapeau','oiseau'], 'Dans bateau, eau se lit comme le o de vélo. Trois lettres font un seul son.', 'Écoute eau dans bateau. Le son seul ne permet pas de choisir entre au et eau : on apprend le mot entier.'),
   entry('g','sounds','gâteau','🎂',['ga','go','gui','gou','gai'],['gâteau','gant','guitare','gorille','escargot'], 'Ici, on écoute le g de gâteau. Devant e et i, g change souvent de son, comme dans girafe. Avec gu, il garde le son de guitare.', 'Compare gâteau et girafe. Dans ces jeux, on commence avec le g de gâteau.'),
   entry('j','sounds','journal','📰',['je','jou','ju','jeu','joi'],['journal','jus','bijou','jouet','judo'], 'Le j descend sous la ligne et porte un point. Écoute le début de journal.', 'Fais vibrer doucement ta voix. Écoute j dans journal et dans bijou.'),
+  entry('br','clusters','brocoli','🥦',['bra','bri','bro','bru','bré'],['brocoli','brique','brosse','arbre','zèbre'], 'B et r se suivent. Lis les deux consonnes ensemble, puis la voyelle : bra, bri, bro.', 'Écoute br dans brocoli et dans arbre.'),
+  entry('dr','clusters','dragon','🐉',['dra','dri','dro','dru','dré'],['dragon','drapeau','dromadaire','cadre','cèdre'], 'D et r se suivent. Garde les deux sons, comme au début de dragon.', 'Écoute dr dans dragon et dans cadre.'),
+  entry('gr','clusters','grenouille','🐸',['gra','gri','gro','gru','gré'],['grenouille','grue','grillon','tigre','grappe'], 'G et r se suivent. Assemble les deux consonnes, comme dans grenouille.', 'Écoute gr dans grenouille et dans tigre.'),
+  entry('cr','clusters','crabe','🦀',['cra','cri','cro','cru','cré'],['crabe','crocodile','crayon','croissant','écran'], 'C et r se suivent. Ici, c fait le même son que dans cadeau.', 'Écoute cr dans crabe et dans écran.'),
+  entry('fr','clusters','fraise','🍓',['fra','fri','fro','fru','fré'],['fraise','frites','fromage','fruit','coffre'], 'F et r se suivent. Souffle pour f, puis enchaîne avec r.', 'Écoute fr dans fraise et dans coffre.'),
+  entry('pr','clusters','prise','🔌',['pra','pri','pro','pru','pré'],['prise','imprimante','empreinte','éprouvette','prince'], 'P et r se suivent. Enchaîne les deux consonnes avant la voyelle.', 'Écoute pr dans prise et dans imprimante.'),
+  entry('tr','clusters','train','🚂',['tra','tri','tro','tru','tré'],['train','tracteur','trompette','citron','trèfle'], 'T et r se suivent. Assemble les deux consonnes, comme dans train.', 'Écoute tr dans train et dans citron.'),
 ];
 export const families = [
   { id:'letters', title:'Les lettres malicieuses', subtitle:'J’observe leur forme', letters:['p','b','d','q'], color:'peach', emoji:'🔎' },
   { id:'sounds', title:'Les sons qui chatouillent', subtitle:'J’écoute et je ressens', letters:['f','v','g','j'], color:'lilac', emoji:'🎵' },
   { id:'vowels', title:'Les voyelles magiques', subtitle:'Je découvre leurs sons', letters:['e','é','ai','oi','ou','au','eau'], color:'blue', emoji:'✨' },
+  { id:'clusters', title:'Les consonnes qui grincent', subtitle:'J’assemble deux consonnes', letters:['br','dr','gr','cr','fr','pr','tr'], color:'mint', emoji:'🦗' },
 ];
 export const modes = [
   {id:'caterpillar', name:'La chenille des mots', description:'Écoute, choisis, fais-la avancer !', icon:'bug'},

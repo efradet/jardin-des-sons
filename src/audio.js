@@ -3,6 +3,14 @@ import {pronunciationText} from './pronunciation.js';
 let currentAudio=null;
 let sequence=0;
 let finishPending=null;
+export function caterpillarSound(correct){
+  silence();
+  if(typeof window==='undefined'||typeof window.Audio!=='function')return;
+  const player=new window.Audio(correct?'/audio/chenille-miam.wav':'/audio/chenille-beurk.wav');
+  currentAudio=player;player.volume=.65;
+  player.onended=()=>{if(currentAudio===player)currentAudio=null;};
+  try{Promise.resolve(player.play()).catch(()=>{});}catch{}
+}
 export const canSpeak=()=>typeof window!=='undefined' && (typeof window.Audio==='function' || 'speechSynthesis' in window);
 export function silence(){
   sequence++;

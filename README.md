@@ -1,6 +1,6 @@
 # Le jardin des sons
 
-Application française React + Vite pour explorer la lecture avec une carte mentale interactive. Toutes les branches sont librement accessibles : p, b, d, q, f, v, e, é, ai, oi, ou, au, eau, g et j.
+Application française React + Vite pour explorer la lecture avec une carte mentale interactive. Toutes les branches sont librement accessibles : p, b, d, q, f, v, e, é, ai, oi, ou, au, eau, g, j, br, dr, gr, cr, fr, pr et tr.
 
 ## Lancer
 
@@ -17,7 +17,7 @@ Le serveur écoute sur le port **5182**, sur toutes les interfaces. Sur ce PC : 
 
 ## Jouer
 
-- Choisir parmi p, b, d, q, f, v, e, é, ai, oi, ou, au, eau, g et j dans la carte.
+- Choisir parmi p, b, d, q, f, v, e, é, ai, oi, ou, au, eau, g, j, br, dr, gr, cr, fr, pr et tr dans la carte.
 - Écouter les exemples et découvrir l'indice de forme ou de prononciation.
 - **Je repère** : retrouver la lettre affichée parmi des lettres proches.
 - **Les mots en images** : lire un mot entier puis choisir son dessin, sans légende visible dans les réponses. Les cartes gardent leur taille après un appui. Ce jeu ne propose aucun bouton d'écoute, même dans l'aide ou après la réponse.
@@ -31,11 +31,11 @@ Le serveur écoute sur le port **5182**, sur toutes les interfaces. Sur ce PC : 
 
 ## Audio, données et accompagnement
 
-Le vocabulaire est livré avec **298 fichiers audio**, produits avec la voix française **Denise Neural** (Microsoft), à un débit légèrement ralenti (-12 %). La voix reste identique sur ordinateur et téléphone. Il s'agit de synthèse vocale préenregistrée, pas d'une personne enregistrée. Les formes ambiguës sont corrigées avec des homophones : `vo` → `veau`, `vai` → `vais`, `voi` → `voix`. Les exercices montrent toujours la graphie étudiée.
+Le vocabulaire est livré avec **436 enregistrements de vocabulaire**, produits avec la voix française **Denise Neural** (Microsoft), à un débit légèrement ralenti (-12 %). La voix reste identique sur ordinateur et téléphone. Il s'agit de synthèse vocale préenregistrée, pas d'une personne enregistrée. Les formes ambiguës sont corrigées avec des homophones : `vo` → `veau`, `vai` → `vais`, `voi` → `voix`. Les exercices montrent toujours la graphie étudiée.
 
 Les fichiers sont lus directement depuis l'hébergement, sans clé API ni service de synthèse appelé pendant les jeux. En cas d'échec audio, l'application affiche une aide et permet de réessayer ; elle ne remplace pas les sons étudiés par une autre voix. Seul un éventuel texte auxiliaire absent du catalogue peut utiliser `speechSynthesis`. Aucun micro n'est utilisé. L'application n'évalue pas la lecture orale. Vérifier ensemble les sons à la première utilisation : un test logiciel ne certifie pas une prononciation.
 
-Les **63 dessins de mots et la chenille** sont les SVG originaux [OpenMoji](https://openmoji.org/), sous [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), distribués sans modification. Attribution détaillée : `public/illustrations/ATTRIBUTION.md`. Les illustrations pouvant représenter plusieurs bonnes réponses ne sont pas opposées dans un même défi (oiseau / hibou, poisson / requin).
+Les **95 dessins de mots et la chenille** sont les SVG originaux [OpenMoji](https://openmoji.org/), sous [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), distribués sans modification. Attribution détaillée : `public/illustrations/ATTRIBUTION.md`. Les illustrations pouvant représenter plusieurs bonnes réponses ne sont pas opposées dans un même défi (oiseau / hibou, poisson / requin).
 
 Pour régénérer les ressources (facultatif, réservé au développement) : `python -m pip install edge-tts`, `node scripts/prepare-assets.mjs`, puis `python scripts/generate-assets.py`. Seul le vocabulaire générique est envoyé lors de cette génération. Les fichiers livrés rendent Python inutile pour jouer.
 
@@ -50,3 +50,7 @@ La carte mentale organise la découverte : elle n'est pas présentée comme un t
 Les contenus sont dans `src/content.js`, le moteur dans `src/game.js`, la carte dans `src/App.jsx`, les séances dans `src/Exercise.jsx` et le thème dans `src/styles.css`.
 
 Repères : [BDA](https://cdn.bdadyslexia.org.uk/uploads/documents/Advice/style-guide/BDA-Style-Guide-2023.pdf?v=1680084017), [CSEN / Réseau Canopé](https://www.reseau-canope.fr/fileadmin/user_upload/Projets/conseil_scientifique_education_nationale/MANUELS_CSEN_VDEF.pdf).
+
+La famille **Les consonnes qui grincent** propose br, dr, gr, cr, fr, pr et tr. La chenille utilise deux bruitages originaux sans voix : trois grignotements et un petit son joyeux pour une bonne réponse, un son descendant pour une grimace. Régénération hors ligne : python scripts/generate-effects.py.
+
+Une fleur arc-en-ciel animée et trois courts feux festifs célèbrent les séances. Le jardin affiche une fleur arc-en-ciel dès la première fleur, puis toutes les six fleurs. Le total et les anciennes sauvegardes restent inchangés. Les animations respectent la préférence de mouvement réduit.

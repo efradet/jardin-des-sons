@@ -6,7 +6,7 @@ import {createQuestions} from '../src/game.js';
 import {pronunciationText} from '../src/pronunciation.js';
 
 test('au, eau, g and j have five illustrated words and belong to the map',()=>{
-  for(const id of ['au','eau','g','j']){
+  for(const id of ['au','eau','g','j','br','dr','gr','cr','fr','pr','tr']){
     assert.ok(topics.some(t=>t.id===id));
     assert.ok(families.some(f=>f.letters.includes(id)));
     assert.equal(pictureWords[id].length,5);
