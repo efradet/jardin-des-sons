@@ -1,6 +1,7 @@
 import { topics, modes } from './content.js';
 import {pronunciationText} from './pronunciation.js';
 import {pictures, pictureWords, ambiguousPictures} from './pictures.js';
+import {readSchool} from './school/engine.js';
 export const initialSession = () => ({correct:0, firstTry:0, attempts:0, mistakes:0, hintUsed:false, solved:false, feedback:'', choice:null});
 export function shuffle(items, random = Math.random) {
   const copy = [...items];
@@ -49,10 +50,10 @@ export function readSaved(raw) {
     if(!data || !Number.isSafeInteger(data.flowers) || data.flowers<0) return empty;
     const seen=new Set();
     const history=Array.isArray(data.history)?data.history.filter(r=>{if(!validResult(r)||seen.has(r.id))return false;seen.add(r.id);return true;}).slice(-100).map(cleanResult):[];
-    return {flowers:data.flowers,completed:Array.isArray(data.completed)?[...new Set(data.completed.filter(id=>topics.some(t=>t.id===id)))]:[],history};
+    return {flowers:data.flowers,completed:Array.isArray(data.completed)?[...new Set(data.completed.filter(id=>topics.some(t=>t.id===id)))]:[],history,...(data.school?{school:readSchool(data.school)}:{})};
   } catch {return empty;}
 }
 export function recordSession(progress,result){
   if(!validResult(result)||progress.history?.some(r=>r.id===result.id))return progress;
-  return {flowers:progress.flowers+1,completed:result.topic==='mix'?[...progress.completed]:[...new Set([...progress.completed,result.topic])],history:[...(progress.history||[]),cleanResult(result)].slice(-100)};
+  return {...progress,flowers:progress.flowers+1,completed:result.topic==='mix'?[...progress.completed]:[...new Set([...progress.completed,result.topic])],history:[...(progress.history||[]),cleanResult(result)].slice(-100)};
 }

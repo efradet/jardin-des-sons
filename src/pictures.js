@@ -1,5 +1,6 @@
 // Original, unmodified OpenMoji drawings, CC BY-SA 4.0. See public/illustrations/ATTRIBUTION.md.
-const picture = (code, near) => ({code, near, src:`/illustrations/${code}.svg`});
+import {assetUrl} from './asset-url.js';
+const picture = (code, near) => ({code, near, src:assetUrl(`/illustrations/${code}.svg`)});
 export const pictures = {
   brocoli:picture('1F966',['brocoli','broche','bricolage']),
   brique:picture('1F9F1',['brique','brioche','crique']),
