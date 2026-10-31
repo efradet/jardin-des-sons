@@ -1,5 +1,27 @@
 # Le jardin des sons
 
+## Les leçons de l’école 1–17
+
+La carte et les jeux habituels restent la page d’accueil. « Ouvrir les leçons 1–17 » ou « Mon chemin » ouvre le parcours. Le coin des parents permet de choisir parmi les dix-sept leçons et de retrouver les résultats.
+
+Les nouvelles leçons portent sur n (13), é/è/ê (14), t (15), un/et (16) et c (17).
+
+**Ma petite histoire** propose une histoire par leçon avec chaque mot à toucher pour l’écouter, puis deux petites questions de compréhension. Les leçons 1 et 2 proposent une lecture partagée avec un adulte. Une fleur est accordée après les deux réponses ; l’écoute d’un mot est indiquée comme une aide dans les résultats.
+
+La progression suit les photos Léo et Léa fournies : 1 (a, o), 2 (l, é), 3 (i, v), 4 (m, u), 5 (f, le/la), 6 (s), 7 (ch), 8 (e, r), puis les leçons 9 à 12 déjà présentes (p, o, d/y, j). Les exercices sont des créations adaptées à cette progression. Les premières dictées portent sur des lettres ou des suites de syllabes, avant les mots. Les consignes et les questions peuvent être écoutées avec un adulte.
+
+- **On commence** : 7 étapes — trois assemblages, une lecture avec question et trois dictées préparées.
+- **La grande promenade** : 12 étapes — trois assemblages, trois lectures avec questions et six dictées préparées, alternés en trois groupes de quatre étapes. Les six dictées sont distinctes ; les difficultés rencontrées reviennent en priorité.
+- **Mission défi** : deux enquêtes de lecture et trois dictées avec le modèle caché dès le départ. Des indices restent disponibles.
+- **Ma petite dictée** : trois dictées préparées, avec correction des lettres et aide.
+- **Sur mon cahier** : préparation, écoute et modèle à vérifier avec un adulte. Ce travail est identifié séparément, sans correction automatique.
+
+Les séances courtes et longues donnent chacune une seule fleur à la fin. Une pause quitte la séance sans enregistrer les étapes inachevées. Les anciennes fleurs, préférences et résultats sont conservés ; les 100 dernières séances scolaires sont gardées dans ce navigateur. Aucun compte, micro ou envoi des résultats.
+
+Les modèles utilisent des enregistrements de syllabes ou de mots entiers, avec des étapes visuelles manuelles. Lettres muettes, doubles et accents sont expliqués. Les nouvelles ressources utilisent la même voix Denise Neural. La présence et la lecture des fichiers sont vérifiées ; une écoute avec un adulte reste utile pour juger la prononciation des suites de lettres.
+
+Régénération audio : `node scripts/prepare-school-audio.mjs`, puis `python scripts/generate-school-audio.py` avec `edge-tts` 7.3.1 ou ultérieur. Seuls les textes pédagogiques fixes sont envoyés lors de cette génération ; le jeu utilise ensuite les fichiers livrés.
+
 Application française React + Vite pour explorer la lecture avec une carte mentale interactive. Toutes les branches sont librement accessibles : p, b, d, q, f, v, e, é, ai, oi, ou, au, eau, g, j, br, dr, gr, cr, fr, pr et tr.
 
 ## Lancer

@@ -7,6 +7,8 @@ import {speak,silence} from './audio.js';
 import Modal from './Modal.jsx';
 import Exercise from './Exercise.jsx';
 import History from './History.jsx';
+import SchoolPath from './school/SchoolPath.jsx';
+import {recordSchool} from './school/engine.js';
 
 const icons={eye:Eye,ear:Ear,book:BookOpen,picture:Image,bug:Bug};
 const storageKey='jardin-des-sons-progress-v1';
@@ -28,6 +30,7 @@ export default function App(){
   useEffect(()=>{try{localStorage.setItem(storageKey,JSON.stringify(progress));}catch{setStorageError(true);}},[progress]);
   useEffect(()=>{try{localStorage.setItem('jardin-preferences',JSON.stringify(prefs));}catch{setStorageError(true);}},[prefs]);
   useEffect(()=>()=>silence(),[]);
+  useEffect(()=>{silence();},[view]);
   useEffect(()=>{
     if(!document.modelContext?.registerTool)return;
     const lifecycle=new AbortController();
@@ -39,12 +42,13 @@ export default function App(){
   return <div className={`app ${prefs.large?'large-text':''} ${prefs.spaced?'spaced-text':''}`}>
     <a className="skip-link" href="#main">Aller aux jeux</a>
     <header className="header"><a href="#" className="brand" onClick={e=>{e.preventDefault();setView('map');}}><span className="brand-icon"><Sprout size={28}/></span><span>le jardin<span className="brand-bottom">des sons<span className="brand-dot">.</span></span></span></a>
-      <nav aria-label="Navigation principale"><button className={view==='map'?'nav-link active':'nav-link'} onClick={()=>setView('map')}><Map size={18}/> Ma carte</button><button className={view==='garden'?'nav-link active':'nav-link'} onClick={()=>setView('garden')}><Flower2 size={18}/> Mon jardin {progress.flowers>0&&<span className="nav-count">{progress.flowers}</span>}</button></nav>
+      <nav aria-label="Navigation principale"><button className={view==='school'?'nav-link active':'nav-link'} onClick={()=>setView('school')}><BookOpen size={18}/> Mon chemin</button><button className={view==='map'?'nav-link active':'nav-link'} onClick={()=>setView('map')}><Map size={18}/> Ma carte</button><button className={view==='garden'?'nav-link active':'nav-link'} onClick={()=>setView('garden')}><Flower2 size={18}/> Mon jardin {progress.flowers>0&&<span className="nav-count">{progress.flowers}</span>}</button></nav>
       <div className="header-right"><button className="icon-button settings-toggle" onClick={()=>setModal('settings')} aria-label="Réglages de lecture"><Settings2 size={21}/></button><span className="header-divider"/><span className="avatar">E</span><span className="profile-name">Elisabeth</span></div>
     </header>
     <main id="main">
-      <section className="welcome"><div><div className="greeting"><Sun size={17}/> BONJOUR ELISABETH</div><h1>{view==='map'?<>Fais grandir ta lecture<span className="heading-dot">.</span></>:<>Ton jardin grandit<span className="heading-dot">.</span></>}</h1><p>{view==='map'?'Un son, un petit jeu, une nouvelle découverte.':'Chaque fleur raconte une petite victoire.'}</p></div><div className="flower-counter"><span className="counter-icon"><Flower2 size={27}/></span><div><strong>{progress.flowers} {progress.flowers===1?'fleur cueillie':'fleurs cueillies'}</strong><span>Ça commence par une petite graine !</span></div></div></section>
-      {view==='map'?<>
+      <section className="welcome"><div><div className="greeting"><Sun size={17}/> BONJOUR ELISABETH</div><h1>{view==='school'?<>Ton petit chemin de lecture<span className="heading-dot">.</span></>:view==='map'?<>Fais grandir ta lecture<span className="heading-dot">.</span></>:<>Ton jardin grandit<span className="heading-dot">.</span></>}</h1><p>{view==='school'?'Les leçons de l’école, un petit pas après l’autre.':view==='map'?'Un son, un petit jeu, une nouvelle découverte.':'Chaque fleur raconte une petite victoire.'}</p></div><div className="flower-counter"><span className="counter-icon"><Flower2 size={27}/></span><div><strong>{progress.flowers} {progress.flowers===1?'fleur cueillie':'fleurs cueillies'}</strong><span>Ça commence par une petite graine !</span></div></div></section>
+      {view==='school'?<SchoolPath progress={progress} onComplete={result=>setProgress(p=>recordSchool(p,result))}/>:view==='map'?<>
+        <section className="school-entry"><div><strong>Les leçons 1–17 de l’école</strong><p>Lecture guidée et petites dictées, en plus de tes jeux habituels.</p></div><button className="primary" onClick={()=>setView('school')}>Ouvrir les leçons 1–17</button></section>
         <section className="level-bar" aria-label="Niveau de lecture"><div><span className="eyebrow">PRÊTE POUR UN NOUVEAU DÉFI ?</span><strong>Choisis ton aventure</strong></div><div className="level-options">{levels.map(l=><button key={l.id} className={prefs.level===l.id?'level-choice selected':'level-choice'} aria-pressed={prefs.level===l.id} onClick={()=>setPrefs(p=>({...p,level:l.id}))}><strong>{l.name}</strong><span>{l.description}</span></button>)}</div></section><div className="workspace">
           <section className="map-panel" aria-labelledby="map-title"><div className="panel-heading"><div><span className="eyebrow">À TOI D’EXPLORER</span><h2 id="map-title">Ma carte des sons</h2></div><span className="map-label"><span/> 3 chemins à découvrir</span></div>
             <div className="mind-map">
