@@ -1,12 +1,13 @@
 import clips from './audio-manifest.json';
 import {pronunciationText} from './pronunciation.js';
+import {assetUrl} from './asset-url.js';
 let currentAudio=null;
 let sequence=0;
 let finishPending=null;
 export function caterpillarSound(correct){
   silence();
   if(typeof window==='undefined'||typeof window.Audio!=='function')return;
-  const player=new window.Audio(correct?'/audio/chenille-miam.wav':'/audio/chenille-beurk.wav');
+  const player=new window.Audio(assetUrl(correct?'/audio/chenille-miam.wav':'/audio/chenille-beurk.wav'));
   currentAudio=player;player.volume=.65;
   player.onended=()=>{if(currentAudio===player)currentAudio=null;};
   try{Promise.resolve(player.play()).catch(()=>{});}catch{}
@@ -30,7 +31,7 @@ export function speak(text,onError=()=>{}){
     const fail=()=>{if(request!==sequence){finish(false);return;}onError();finish(false);};
     timer=setTimeout(fail,12000);
     if(clips[text]){
-      const player=new window.Audio(clips[text]);currentAudio=player;player.volume=.9;
+      const player=new window.Audio(assetUrl(clips[text]));currentAudio=player;player.volume=.9;
       player.onplaying=()=>finish(request===sequence);
       player.onerror=fail;
       player.onended=()=>{if(currentAudio===player)currentAudio=null;};
